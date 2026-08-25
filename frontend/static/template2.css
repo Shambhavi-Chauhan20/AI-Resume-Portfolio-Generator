@@ -1,0 +1,776 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080b0f;
+    color: #e6edf3;
+    font-family: "Space Grotesk", sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(8, 11, 15, 0.92);
+    border-bottom: 1px solid #1d252d;
+
+    backdrop-filter: blur(12px);
+    padding: 20px 0;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.terminal-logo {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: #e6edf3;
+}
+
+.terminal-logo span {
+    color: #00ff88;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: #7d8590;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: #00ff88;
+}
+
+.status {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #7d8590;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff88;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    padding: 100px 0 120px;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-window {
+    border: 1px solid #26313a;
+    background: #0d1117;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+}
+
+.terminal-header {
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    border-bottom: 1px solid #26313a;
+    background: #11161c;
+}
+
+.terminal-header p {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #6e7681;
+}
+
+.terminal-buttons {
+    position: absolute;
+    left: 18px;
+
+    display: flex;
+    gap: 7px;
+}
+
+.terminal-buttons span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #30363d;
+}
+
+.terminal-body {
+    padding: 70px;
+}
+
+.command {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    color: #8b949e;
+    margin-bottom: 20px;
+}
+
+.command span {
+    color: #00ff88;
+}
+
+.terminal-body h1 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.95;
+    letter-spacing: -5px;
+    margin-bottom: 15px;
+}
+
+.role {
+    font-family: "JetBrains Mono", monospace;
+    color: #00ff88;
+    font-size: 16px;
+    margin-bottom: 55px;
+}
+
+.description {
+    max-width: 650px;
+    font-size: 18px;
+    color: #8b949e;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.terminal-btn {
+    display: inline-block;
+
+    padding: 13px 20px;
+
+    border: 1px solid #00ff88;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+
+    color: #00ff88;
+
+    transition: 0.3s ease;
+}
+
+.terminal-btn:hover {
+    background: #00ff88;
+    color: #080b0f;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.25);
+}
+
+.terminal-btn.outline {
+    border-color: #30363d;
+    color: #8b949e;
+}
+
+.terminal-btn.outline:hover {
+    border-color: #00ff88;
+    color: #00ff88;
+    background: transparent;
+    box-shadow: none;
+}
+
+.bottom-command {
+    margin-top: 60px;
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.section {
+    padding: 110px 0;
+}
+
+.dark-section {
+    background: #0b0f14;
+    border-top: 1px solid #1d252d;
+    border-bottom: 1px solid #1d252d;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 60px;
+}
+
+.section-title span {
+    font-family: "JetBrains Mono", monospace;
+    color: #00ff88;
+    font-size: 13px;
+}
+
+.section-title h2 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 30px;
+    color: #e6edf3;
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.code-block {
+    border: 1px solid #26313a;
+    background: #0d1117;
+}
+
+.code-header {
+    padding: 12px 18px;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #6e7681;
+
+    border-bottom: 1px solid #26313a;
+}
+
+.code-block pre {
+    padding: 30px;
+
+    overflow-x: auto;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.keyword {
+    color: #ff7b72;
+}
+
+.string {
+    color: #a5d6ff;
+}
+
+.about-text p {
+    color: #8b949e;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   SKILLS
+========================================= */
+
+.skills-terminal {
+    max-width: 1000px;
+}
+
+.terminal-line {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+    font-family: "JetBrains Mono", monospace;
+    color: #8b949e;
+}
+
+.prompt {
+    color: #00ff88;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.skill-card {
+    border: 1px solid #26313a;
+    background: #0d1117;
+
+    padding: 30px;
+
+    transition: 0.3s ease;
+}
+
+.skill-card:hover {
+    border-color: #00ff88;
+    transform: translateY(-5px);
+}
+
+.skill-icon {
+    display: inline-flex;
+
+    min-width: 45px;
+    height: 30px;
+
+    padding: 0 8px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #30363d;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+
+    color: #00ff88;
+
+    margin-bottom: 25px;
+}
+
+.skill-card h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.skill-card p {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #6e7681;
+}
+
+
+/* =========================================
+   PROJECTS
+========================================= */
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.developer-project {
+    border: 1px solid #26313a;
+    background: #0d1117;
+
+    padding: 30px;
+
+    transition: 0.3s ease;
+}
+
+.developer-project:hover {
+    border-color: #00ff88;
+    transform: translateY(-7px);
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 45px;
+}
+
+.project-index {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: #6e7681;
+}
+
+.project-status {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #00ff88;
+}
+
+.developer-project h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.developer-project p {
+    color: #8b949e;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 30px;
+}
+
+.project-tech span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+
+    padding: 6px 9px;
+
+    border: 1px solid #30363d;
+    color: #8b949e;
+}
+
+.project-links {
+    display: flex;
+    gap: 20px;
+}
+
+.project-links a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #00ff88;
+}
+
+.project-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   EXPERIENCE
+========================================= */
+
+.experience-terminal {
+    border-left: 1px solid #26313a;
+}
+
+.experience-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 30px;
+
+    padding: 35px 0 35px 30px;
+
+    border-bottom: 1px solid #1d252d;
+}
+
+.experience-number {
+    font-family: "JetBrains Mono", monospace;
+    color: #00ff88;
+    font-size: 13px;
+}
+
+.date {
+    font-family: "JetBrains Mono", monospace;
+    color: #6e7681;
+    font-size: 11px;
+}
+
+.experience-content h3 {
+    font-size: 25px;
+    margin: 10px 0 3px;
+}
+
+.experience-content h4 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #00ff88;
+    margin-bottom: 15px;
+}
+
+.experience-content p {
+    max-width: 700px;
+    color: #8b949e;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   EDUCATION
+========================================= */
+
+.education-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    padding: 35px;
+
+    max-width: 750px;
+
+    border: 1px solid #26313a;
+    background: #0d1117;
+}
+
+.education-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #00ff88;
+
+    font-family: "JetBrains Mono", monospace;
+    color: #00ff88;
+}
+
+.education-card h3 {
+    font-size: 25px;
+    margin: 8px 0 3px;
+}
+
+.education-card h4 {
+    color: #00ff88;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.education-card p {
+    color: #8b949e;
+}
+
+
+/* =========================================
+   ACHIEVEMENTS
+========================================= */
+
+.achievement-list {
+    border-top: 1px solid #26313a;
+}
+
+.achievement-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 30px;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid #26313a;
+}
+
+.achievement-item > span {
+    font-family: "JetBrains Mono", monospace;
+    color: #00ff88;
+}
+
+.achievement-item h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.achievement-item p {
+    color: #8b949e;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact-section {
+    padding: 120px 0;
+}
+
+.contact-terminal {
+    max-width: 900px;
+    margin: auto;
+
+    border: 1px solid #26313a;
+    background: #0d1117;
+}
+
+.contact-body {
+    padding: 70px;
+}
+
+.contact-body h2 {
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1;
+    letter-spacing: -3px;
+
+    margin-bottom: 25px;
+}
+
+.contact-body > p:not(.command) {
+    max-width: 550px;
+
+    color: #8b949e;
+
+    margin-bottom: 35px;
+}
+
+.social-links {
+    display: flex;
+    gap: 25px;
+
+    margin-top: 45px;
+}
+
+.social-links a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: #6e7681;
+
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #00ff88;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    border-top: 1px solid #1d252d;
+    padding: 25px 0;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+
+    color: #6e7681;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 950px) {
+
+    nav {
+        display: none;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .projects-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .hero {
+        padding: 60px 0 80px;
+    }
+
+    .terminal-body {
+        padding: 40px 25px;
+    }
+
+    .terminal-body h1 {
+        font-size: 52px;
+        letter-spacing: -3px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-title h2 {
+        font-size: 23px;
+    }
+
+    .skills-grid,
+    .projects-list {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding-left: 20px;
+    }
+
+    .achievement-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .education-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-body {
+        padding: 45px 25px;
+    }
+
+    .contact-body h2 {
+        font-size: 48px;
+    }
+
+    .footer .container {
+        flex-direction: column;
+    }
+
+}
