@@ -1,32 +1,50 @@
-# Folio — AI Resume Portfolio Generator
+<div align="center">
 
-> Convert your resume into a professional portfolio webpage using the Google Gemini API.
+# ✨ Folio — AI Resume Portfolio Generator
 
-Built with **Python · Flask · Google Gemini API · Jinja2 · HTML · CSS · JavaScript**
+### *Turn your resume into a stunning portfolio webpage in seconds — powered by Google Gemini AI* 🚀
 
----
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Now-6c47ff?style=for-the-badge)](https://ai-resume-portfolio-generator-r9lp.onrender.com)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Flask](https://img.shields.io/badge/Flask-3.1-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
+[![Gemini](https://img.shields.io/badge/Google%20Gemini-API-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://aistudio.google.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](./LICENSE)
 
-## Features
-
-- **Two ways to generate:** CLI (`python main.py`) or interactive Web App (`python backend/app.py`)
-- **AI-powered extraction:** Gemini parses your resume into structured JSON — name, headline, summary, skills, education, experience, projects, achievements, and contact info
-- **4 portfolio templates:** Clean, Developer (dark mode), Creative, and Minimal
-- **Human review step:** Every extracted field is shown to you before the portfolio is rendered — nothing goes into your portfolio without your approval
-- **Empty section hiding:** Sections with no data are automatically omitted
-- **Self-contained HTML output:** The generated `portfolio.html` works offline with no external dependencies
-- **Desktop + mobile preview:** Toggle between viewport sizes before downloading
-- **Responsible by design:** The prompt strictly forbids Gemini from inventing any information
+</div>
 
 ---
 
-## Project Structure
+## 🎯 What is Folio?
+
+**Folio** takes your plain-text resume, sends it to Google's Gemini AI, and instantly generates a beautiful, professional portfolio webpage — no design skills needed.
+
+> 🔗 **Try it live:** [ai-resume-portfolio-generator-r9lp.onrender.com](https://ai-resume-portfolio-generator-r9lp.onrender.com)
+
+---
+
+## ⚡ Features
+
+| Feature | Details |
+|---|---|
+| 🤖 **AI-Powered Extraction** | Gemini parses name, headline, summary, skills, education, experience, projects, achievements & contact |
+| 🎨 **4 Portfolio Templates** | Clean · Developer (dark mode) · Creative · Minimal |
+| 👀 **Human Review Step** | Every AI-extracted field is shown to you before rendering — nothing goes to your portfolio without approval |
+| 🙈 **Smart Section Hiding** | Sections with no data are automatically omitted |
+| 📦 **Self-Contained Output** | Generated `portfolio.html` works fully offline — no CDN dependencies |
+| 📱 **Desktop + Mobile Preview** | Toggle between viewport sizes before downloading |
+| 🔒 **Responsible AI** | The prompt strictly forbids Gemini from inventing any information |
+| 🔁 **Auto Retry** | Exponential backoff on Gemini 429/503 errors |
+| 💻 **CLI + Web App** | Use it headlessly or through a beautiful step-by-step web interface |
+
+---
+
+## 🗂️ Project Structure
 
 ```
 AI-resume-portfolio-generator/
 │
-├── main.py                  # CLI entry point: resume.txt → portfolio.html
-├── resume.txt               # Sample resume (fictional — replace with your own)
-├── portfolio.html           # Sample generated output
+├── 🐍 main.py                  # CLI entry point: resume.txt → portfolio.html
+├── 📄 resume.txt               # Sample resume (replace with your own)
 │
 ├── backend/
 │   ├── app.py               # Flask routes and upload handling
@@ -37,192 +55,181 @@ AI-resume-portfolio-generator/
 ├── frontend/
 │   ├── templates/
 │   │   ├── index.html       # Main SPA (all 7 screens)
-│   │   ├── template_1.html  # Clean template
-│   │   ├── template_2.html  # Developer (dark) template
-│   │   ├── template_3.html  # Creative template
-│   │   ├── template_4.html  # Minimal template
-│   │   └── portfolio.html   # Legacy portfolio template
+│   │   ├── template_1.html  # 🪄 Clean template
+│   │   ├── template_2.html  # 🌑 Developer (dark) template
+│   │   ├── template_3.html  # 🎨 Creative template
+│   │   └── template_4.html  # 🧘 Minimal template
 │   └── static/
-│       ├── template1.css    # Styles for template 1
-│       ├── template2.css    # Styles for template 2
-│       ├── template3.css    # Styles for template 3
-│       ├── template4.css    # Styles for template 4
-│       └── style.css        # Legacy styles
+│       ├── template1.css – template4.css
+│       └── style.css
 │
-├── screenshots/             # Application screenshots (see screenshots/README.md)
-├── requirements.txt         # Python dependencies (pinned versions)
-├── .env.example             # Environment variable template
-├── .gitignore               # Git exclusions
-└── AI_USAGE_LOG.md          # Record of AI tools used during development
+├── 📸 screenshots/
+├── 📋 requirements.txt
+├── 🔐 .env.example
+└── 📝 AI_USAGE_LOG.md
 ```
 
 ---
 
-## Requirements
+## 🛠️ Setup & Installation
 
-- Python 3.10 or higher
-- A Google Gemini API key ([get one free at Google AI Studio](https://aistudio.google.com/))
+### Prerequisites
+- 🐍 Python **3.10+**
+- 🔑 A Google Gemini API key — [get one free at Google AI Studio](https://aistudio.google.com/)
 
----
+### Step-by-step
 
-## Setup
-
-**1. Clone the repository**
+**1️⃣ Clone the repo**
 ```bash
-git clone https://github.com/your-username/AI-resume-portfolio-generator.git
-cd AI-resume-portfolio-generator
+git clone https://github.com/Shambhavi-Chauhan20/AI-Resume-Portfolio-Generator.git
+cd AI-Resume-Portfolio-Generator
 ```
 
-**2. Install dependencies**
+**2️⃣ Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-**3. Configure your API key**
+**3️⃣ Add your API key**
 ```bash
-# Copy the example file
 cp .env.example .env
-
-# Open .env and add your key
+# Open .env and set:
 GEMINI_API_KEY=your_actual_key_here
 ```
 
-> **Never commit your real `.env` file.** It is listed in `.gitignore`.
+> ⚠️ **Never commit your real `.env` file** — it's already in `.gitignore`.
 
 ---
 
-## Running the Project
+## 🚀 Running the Project
 
-### Option 1 — CLI (matches the brief's primary workflow)
-
-```bash
-python main.py
-```
-
-This reads `resume.txt`, sends it to Gemini, and writes `portfolio.html` to the project root.
-
-```bash
-# Optional arguments:
-python main.py --resume my_cv.txt         # use a custom resume file
-python main.py --template 2               # use Developer (dark) template
-python main.py --output my_portfolio.html # custom output filename
-
-# All templates:
-# 1 = Clean (default)   2 = Developer   3 = Creative   4 = Minimal
-```
-
-### Option 2 — Web App (full interactive experience)
+### 🌐 Option 1 — Web App *(recommended)*
 
 ```bash
 python backend/app.py
 ```
 
-Open `http://127.0.0.1:5000` in your browser. The web app walks you through:
-1. Paste your resume or upload a `.txt` file
-2. Review every AI-extracted field before rendering
-3. Choose a template
-4. Preview the portfolio (desktop + mobile)
-5. Download as a standalone `portfolio.html`
+Open `http://127.0.0.1:5000` and follow the 4-step flow:
+
+```
+📄 Upload Resume  →  👀 Review Fields  →  🎨 Pick Template  →  📥 Download Portfolio
+```
+
+### 🖥️ Option 2 — CLI
+
+```bash
+python main.py
+
+# With options:
+python main.py --resume my_cv.txt --template 2 --output my_portfolio.html
+
+# Templates:  1 = Clean  |  2 = Developer  |  3 = Creative  |  4 = Minimal
+```
 
 ---
 
-## Running Tests
+## 🧪 Running Tests
 
 ```bash
 python backend/test_app.py
 ```
 
-All 6 test cases from the brief are covered:
-
-| Test | Description |
-|---|---|
-| Test 1 | No file uploaded → HTTP 400 with clear error |
-| Test 2 | Resume too short → HTTP 400 with clear error |
-| Test 3 | Missing API key → `RuntimeError` at startup |
-| Test 4 | Valid resume → HTTP 200 with rendered HTML |
-| Test 5 | Invalid API key → HTTP 502 with error message |
-| Test 6 | Invalid JSON from Gemini → HTTP 500 with error message |
+| # | Test | Expected |
+|---|---|---|
+| 1 | No file uploaded | HTTP 400 with clear error |
+| 2 | Resume too short | HTTP 400 with clear error |
+| 3 | Missing API key | `RuntimeError` at startup |
+| 4 | Valid resume | HTTP 200 with rendered HTML |
+| 5 | Invalid API key | HTTP 502 with error message |
+| 6 | Invalid JSON from Gemini | HTTP 500 with error message |
 
 ---
 
-## How It Works
+## 🔄 How It Works
 
 ```
-resume.txt
-    │
-    ▼
-[Python] Read + clean text (strip blanks, collapse whitespace)
-    │
-    ▼
-[Gemini API] Strict prompt → returns structured JSON only
-    │
-    ▼
-[Python] Parse JSON → fill defaults for missing fields
-    │
-    ▼
-[Jinja2] Render HTML template with the parsed data
-    │
-    ▼
-portfolio.html  (self-contained, works offline)
+📄 resume.txt
+      │
+      ▼
+🐍 Python — Read + clean text (strip blanks, collapse whitespace)
+      │
+      ▼
+🤖 Gemini API — Strict prompt → returns structured JSON only
+      │
+      ▼
+🐍 Python — Parse JSON → fill defaults for missing fields
+      │
+      ▼
+🖼️ Jinja2 — Render HTML template with the parsed data
+      │
+      ▼
+✅ portfolio.html (self-contained, works fully offline)
 ```
 
 ---
 
-## Prompt Design
+## 🧠 Prompt Design
 
-The Gemini prompt is defined in `backend/portfolio_builder.py`. It enforces 7 strict rules:
+The Gemini prompt lives in [`backend/portfolio_builder.py`](./backend/portfolio_builder.py) and enforces **7 strict rules**:
 
-1. Return **only** the JSON object — no markdown fences, no explanation
-2. Use **only** information explicitly stated in the resume — never invent anything
-3. Missing fields → empty string `""` or empty array `[]` — never guess
-4. Summary must be **2–3 sentences maximum**, strictly factual
-5. Skills must be a **flat array** taken directly from the resume
-6. Achievements must be **explicitly stated** in the resume — no inferences
-7. Contact sub-fields are only populated if **explicitly present** in the resume
+1. 🚫 Return **only** the JSON object — no markdown fences, no explanation
+2. 🚫 Use **only** information explicitly stated in the resume — never invent anything
+3. 🚫 Missing fields → `""` or `[]` — never guess
+4. ✂️ Summary must be **2–3 sentences max**, strictly factual
+5. 🗂️ Skills must be a **flat array** taken directly from the resume
+6. 🏆 Achievements must be **explicitly stated** — no inferences
+7. 📬 Contact fields only populated if **explicitly present** in the resume
 
-### Known Limitations and Hallucination Risks
+### ⚠️ Known Limitations
 
-- Gemini may **misread formatting** in complex resumes (e.g., confusing a project description with job experience)
-- Gemini may **merge or split** similar sections if the resume structure is ambiguous
-- Dates, company names, and technologies are high-risk fields — always verify these
-- The summary, even with constraints, may occasionally paraphrase in ways that subtly overstate a claim
-- **The Review step is your responsibility.** Every generated claim must be checked against your original resume before submission or sharing.
+- Gemini may misread formatting in complex or multi-column resumes
+- Dates, company names, and technologies are high-risk — always verify
+- **The Review step is your responsibility** — check every field before sharing
 
 ---
 
-## Technologies Used
+## 🧰 Tech Stack
 
 | Technology | Purpose |
 |---|---|
-| Python 3.13 | Core application logic |
-| Flask 3.1.3 | Web server and routing |
-| Google Gemini API (`google-genai`) | AI resume parsing |
-| Jinja2 | HTML template rendering |
-| `python-dotenv` | Environment variable management |
-| HTML + CSS + JavaScript | Frontend UI and portfolio templates |
+| 🐍 Python 3.13 | Core application logic |
+| 🌶️ Flask 3.1 | Web server and routing |
+| 🤖 Google Gemini API | AI resume parsing |
+| 🖼️ Jinja2 | HTML template rendering |
+| 🔐 `python-dotenv` | Environment variable management |
+| 🎨 HTML + CSS + JS | Frontend UI and portfolio templates |
 
 ---
 
-## Optional Enhancements Implemented
+## 🌟 Extras Beyond the Brief
 
-Beyond the brief's minimum requirements, this project includes:
-
-- ✅ **4 portfolio templates** (brief requires at least 1)
+- ✅ **4 portfolio templates** (brief required at least 1)
 - ✅ **Interactive web app** with a 7-screen step-by-step flow
 - ✅ **Human review step** — every AI field is editable before rendering
-- ✅ **Desktop/mobile preview toggle** in the preview screen
+- ✅ **Desktop/mobile preview toggle**
 - ✅ **Exponential backoff retries** on Gemini 429/503 errors
-- ✅ **Inline CSS** in generated HTML — fully offline, no CDN dependencies
-- ✅ **CLI entry point** (`main.py`) — runs without a browser
+- ✅ **Inline CSS** — generated HTML is fully offline, no CDN needed
+- ✅ **CLI entry point** — runs without a browser
+- ✅ **Deployed on Render** — live at [ai-resume-portfolio-generator-r9lp.onrender.com](https://ai-resume-portfolio-generator-r9lp.onrender.com)
 
 ---
 
-## AI Usage
+## 🤖 AI Usage
 
-This project was built with AI assistance. See [`AI_USAGE_LOG.md`](./AI_USAGE_LOG.md) for a full record of what was AI-generated, what prompts were used, and what the team changed before using the output.
+This project was built with AI assistance. See [`AI_USAGE_LOG.md`](./AI_USAGE_LOG.md) for a full record of what was AI-generated, what prompts were used, and what was changed before use.
 
 ---
 
-## License
+## 📄 License
 
 MIT License — see [LICENSE](./LICENSE) for details.
+
+---
+
+<div align="center">
+
+Made with ❤️ by [Shambhavi Chauhan](https://github.com/Shambhavi-Chauhan20)
+
+⭐ *If you found this useful, give it a star!* ⭐
+
+</div>
