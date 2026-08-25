@@ -1,0 +1,50 @@
+# Environment variables — NEVER commit the real .env
+.env
+.env.tmp
+
+# Python caching
+__pycache__/
+tests/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build / distribution artifacts
+dist/
+build/
+*.egg-info/
+*.egg
+MANIFEST
+
+# Pytest / test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Generated output
+# portfolio.html is committed as a sample — remove this comment to ignore future ones
+# portfolio.html
+
+# Internal dev logs — not for public repos
+AI_USAGE_LOG.md
