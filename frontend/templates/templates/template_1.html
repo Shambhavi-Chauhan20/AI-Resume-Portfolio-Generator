@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if name %}{{ name }} | Portfolio{% else %}Portfolio{% endif %}</title>
+    <meta name="description" content="{% if summary %}{{ summary }}{% else %}Professional portfolio.{% endif %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% if inline_css %}
+    <style>{{ inline_css | safe }}</style>
+    {% else %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='template1.css') }}">
+    {% endif %}
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container nav-container">
+            {% if name %}
+            <a href="#" class="logo">{{ name.split()[0][0] }}{% if name.split()|length > 1 %}{{ name.split()[-1][0] }}{% endif %}.</a>
+            {% else %}
+            <a href="#" class="logo">P.</a>
+            {% endif %}
+            <nav aria-label="Portfolio navigation">
+                {% if summary %}<a href="#about">About</a>{% endif %}
+                {% if skills %}<a href="#skills">Skills</a>{% endif %}
+                {% if projects %}<a href="#projects">Projects</a>{% endif %}
+                {% if experience %}<a href="#experience">Experience</a>{% endif %}
+                {% if contact.email or contact.linkedin or contact.github %}<a href="#contact">Contact</a>{% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <p class="eyebrow">HELLO, I'M</p>
+                    {% if name %}<h1>{{ name.split()[0] }}<br>{% if name.split()|length > 1 %}{{ name.split()[1:] | join(' ') }}{% endif %}.</h1>{% endif %}
+                    {% if headline %}<h2>{{ headline }}</h2>{% endif %}
+                    {% if summary %}<p class="hero-description">{{ summary }}</p>{% endif %}
+                    <div class="hero-buttons">
+                        {% if projects %}<a href="#projects" class="btn btn-primary">View My Work</a>{% endif %}
+                        {% if contact.email or contact.linkedin %}<a href="#contact" class="btn btn-secondary">Contact Me</a>{% endif %}
+                    </div>
+                <!-- Image placeholder removed until photo upload is supported -->
+                <!-- <div class="hero-image">
+                    <div class="image-placeholder">
+                        {% if name %}{{ name.split()[0][0] }}{% if name.split()|length > 1 %}{{ name.split()[-1][0] }}{% endif %}{% else %}?{% endif %}
+                    </div>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        {% if summary %}
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-heading"><span>01</span><h2>About Me</h2></div>
+                <div class="about-content">
+                    <div class="about-text"><p>{{ summary }}</p></div>
+                    {% if education %}
+                    <div class="about-info">
+                        {% for edu in education %}
+                        {% if edu.degree or edu.institution %}
+                        <div class="info-item">
+                            <span>{{ edu.year if edu.year else 'Education' }}</span>
+                            <strong>{{ edu.degree }}{% if edu.institution %} · {{ edu.institution }}{% endif %}</strong>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- SKILLS -->
+        {% if skills %}
+        <section id="skills" class="section section-light">
+            <div class="container">
+                <div class="section-heading"><span>02</span><h2>Skills</h2></div>
+                <div class="skills-grid">
+                    {% for skill in skills %}
+                    <div class="skill"><h3>{{ skill }}</h3></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- EDUCATION -->
+        {% if education %}
+        <section id="education" class="section">
+            <div class="container">
+                <div class="section-heading"><span>03</span><h2>Education</h2></div>
+                <div class="timeline">
+                    {% for edu in education %}
+                    {% if edu.degree or edu.institution %}
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            {% if edu.year %}<span class="timeline-date">{{ edu.year }}</span>{% endif %}
+                            {% if edu.degree %}<h3>{{ edu.degree }}</h3>{% endif %}
+                            {% if edu.institution %}<h4>{{ edu.institution }}</h4>{% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- PROJECTS -->
+        {% if projects %}
+        <section id="projects" class="section section-light">
+            <div class="container">
+                <div class="section-heading"><span>04</span><h2>Selected Projects</h2></div>
+                <div class="projects-grid">
+                    {% for project in projects %}
+                    {% if project.title or project.description %}
+                    <article class="project-card">
+                        <div class="project-number">{{ "%02d"|format(loop.index) }}</div>
+                        {% if project.title %}<h3>{{ project.title }}</h3>{% endif %}
+                        {% if project.description %}<p>{{ project.description }}</p>{% endif %}
+                        {% if project.technologies %}
+                        <div class="project-tags">
+                            {% for tech in project.technologies %}<span>{{ tech }}</span>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </article>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- EXPERIENCE -->
+        {% if experience %}
+        <section id="experience" class="section">
+            <div class="container">
+                <div class="section-heading"><span>05</span><h2>Experience</h2></div>
+                <div class="experience-list">
+                    {% for job in experience %}
+                    {% if job.title or job.company %}
+                    <div class="experience-item">
+                        <div>{% if job.dates %}<span class="experience-date">{{ job.dates }}</span>{% endif %}</div>
+                        <div>
+                            {% if job.title %}<h3>{{ job.title }}</h3>{% endif %}
+                            {% if job.company %}<h4>{{ job.company }}</h4>{% endif %}
+                            {% if job.description %}<p>{{ job.description }}</p>{% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- ACHIEVEMENTS -->
+        {% if achievements %}
+        <section class="section section-light">
+            <div class="container">
+                <div class="section-heading"><span>06</span><h2>Achievements</h2></div>
+                <div class="achievements-grid">
+                    {% for ach in achievements %}
+                    <div class="achievement">
+                        <strong>{{ "%02d"|format(loop.index) }}</strong>
+                        <h3>{{ ach }}</h3>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- CONTACT -->
+        {% set has_contact = contact.email or contact.phone or contact.linkedin or contact.github %}
+        {% if has_contact %}
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <span class="eyebrow">GET IN TOUCH</span>
+                    {% if name %}<h2>Let's build<br>something together.</h2>{% endif %}
+                    {% if contact.email %}
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ contact.email }}" target="_blank" class="btn btn-primary">Send Me an Email</a>
+                    {% endif %}
+                    <div class="social-links">
+                        {% if contact.github %}<a href="{{ contact.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+                        {% if contact.linkedin %}<a href="{{ contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+                        {% if contact.phone %}<a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>{% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>© 2026 {% if name %}{{ name }}{% endif %}. All rights reserved.</p>
+            <p>Generated by Folio AI</p>
+        </div>
+    </footer>
+
+</body>
+</html>
