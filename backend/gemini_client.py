@@ -34,7 +34,7 @@ if not GEMINI_API_KEY:
 _client = genai.Client(api_key=GEMINI_API_KEY)
 
 # Use the latest stable flash model as requested by the API error.
-MODEL_NAME = "gemini-3.6-flash"
+MODEL_NAME = "gemini-2.0-flash"
 
 
 class GeminiRequestError(Exception):
